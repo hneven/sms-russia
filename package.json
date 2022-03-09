@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vonage/server-sdk": "^2.10.10",
     "axios": "^0.26.0",
     "twilio": "^3.75.0"
   },
