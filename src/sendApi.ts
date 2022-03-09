@@ -49,20 +49,7 @@ function createData(phoneNumber: string) : string {
 }
 
 async function getPhoneNumber(): Promise<string> {
-    const request: AxiosResponse = await axios.get('https://1920.in/api', {
-        headers: {
-            'cookie': 'cf_clearance=v0MgGuPOfywyAIXOkWM9au_jqPgamnip1tDmNsPkFKI-1646737720-0-150',
-            'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': "macOS",
-            'sec-fetch-dest': 'document',
-            'sec-fetch-mode': 'navigate',
-            'sec-fetch-site': 'none',
-            'sec-fetch-user': '?1',
-            'upgrade-insecure-requests': 1,
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
-        }
-    });
+    const request: AxiosResponse = await axios.get('https://api.1920.in/');
     const phoneNumber: string = request.data;
     return phoneNumber;
 }
