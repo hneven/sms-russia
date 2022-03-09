@@ -1,10 +1,7 @@
-import {AxiosResponse} from "axios";
-
-const axios = require("axios").default;
-
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 
 getPhoneNumber().then(phoneNumber => {
-    var options = {
+    const options: AxiosRequestConfig = {
         method: 'POST',
         url: 'https://d7sms.p.rapidapi.com/secure/send',
         headers: {
