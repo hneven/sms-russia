@@ -2,9 +2,9 @@ import {SMS_CONTENT} from "../smsConstants";
 import {env} from "../environment";
 
 const twilio = require('twilio');
-const client = new twilio(env("TWILIO_ACCOUNT_SID"), env("TWILIO_AUTH_TOKEN"));
 
 export function sendSmsViaTwilio(phoneNumber: string) : void {
+    const client = new twilio(env("TWILIO_ACCOUNT_SID"), env("TWILIO_AUTH_TOKEN"));
     client.messages
         .create({
             body: SMS_CONTENT,

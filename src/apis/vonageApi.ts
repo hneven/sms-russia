@@ -3,12 +3,11 @@ import {env} from "../environment";
 
 const Vonage = require('@vonage/server-sdk')
 
-const vonage = new Vonage({
-    apiKey: env("VONAGE_API_KEY"),
-    apiSecret: env("VONAGE_API_SECRET")
-})
-
 export function sendSmsViaVonage(phoneNumber: string): void {
+    const vonage = new Vonage({
+        apiKey: env("VONAGE_API_KEY"),
+        apiSecret: env("VONAGE_API_SECRET")
+    })
     vonage.message.sendSms(SMS_FROM_TEXT, phoneNumber, SMS_CONTENT, (err, responseData) => {
         if (err) {
             console.log(err);
