@@ -8,7 +8,8 @@ export function sendSmsViaTwilio(phoneNumber: string) : void {
         .create({
             body: env("SMS_CONTENT"),
             to: `+${phoneNumber}`,
-            from: '+12345678901', // From a valid Twilio number
+            from: env("TWILIO_FROM_PHONENUMBER"), // From a valid Twilio number
         })
-        .then((message) => console.log(message.sid));
+        .then((message) => console.log(message.sid))
+        .catch(err => console.log(err));
 }
