@@ -1,10 +1,11 @@
 import {SMS_CONTENT, SMS_FROM_TEXT} from "../smsConstants";
+import {env} from "../environment";
 
 const Vonage = require('@vonage/server-sdk')
 
 const vonage = new Vonage({
-    apiKey: "80230bef",
-    apiSecret: "msmzYJ3CEsAerlaD"
+    apiKey: env("VONAGE_API_KEY"),
+    apiSecret: env("VONAGE_API_SECRET")
 })
 
 export function sendSmsViaVonage(phoneNumber: string): void {

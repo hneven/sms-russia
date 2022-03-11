@@ -1,5 +1,6 @@
 import axios, {AxiosRequestConfig} from "axios";
 import {SMS_CONTENT, SMS_FROM_TEXT} from "../smsConstants";
+import {env} from "../environment";
 
 export function sendSmsViaRapid(phoneNumber: string): void {
     const options: AxiosRequestConfig = {
@@ -7,9 +8,9 @@ export function sendSmsViaRapid(phoneNumber: string): void {
     url: 'https://d7sms.p.rapidapi.com/secure/send',
     headers: {
         'content-type': 'application/json',
-        authorization: 'Basic ZnRleTMxMjg6Q2xmYzdKYXM=',
+        authorization: 'Basic ' + env("D7NETWORKS_API_KEY"),
         'x-rapidapi-host': 'd7sms.p.rapidapi.com',
-        'x-rapidapi-key': 'd0c6fef356msh99d4b9b34fab262p177891jsn4d9e16e9fc35'
+        'x-rapidapi-key': env("RAPID_API_KEY")
     },
     data: createData(phoneNumber)
     };
