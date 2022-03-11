@@ -6,7 +6,8 @@ module.exports = {
     target: "node",
     devtool: "inline-source-map",
     entry: {
-        main: "./src/handler.ts",
+        sms: "./src/handlerSms.ts",
+        mail: "./src/handlerEmail.ts"
     },
     output: {
         libraryTarget: 'commonjs2',
