@@ -29,7 +29,11 @@ RAPID_API_KEY="YOUR API KEY HERE"
 ```
 
 ### Editing the SMS content
-In the file `./src/smsContents.ts` the SMS content and from messages are set. If You want to change them, edit them as You want.
+In the file `.env` the SMS content and from messages are set. If You want to change them, edit them as You want.
+``` 
+SMS_CONTENT = ""
+SMS_FROM_TEXT = ""
+```
 
 ### Webpack
 You need to execute webpack to compile the TypeScript code to common JavaScript.

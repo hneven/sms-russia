@@ -1,4 +1,3 @@
-import {SMS_CONTENT, SMS_FROM_TEXT} from "../smsConstants";
 import {SmsParams} from "sms77-client/dist/types/sms";
 import {env} from "../environment";
 
@@ -14,9 +13,9 @@ export function sendSmsViaSms77(phoneNumber: string): void {
 
 function createParams(phoneNumber: string):SmsParams {
     return {
-        from: SMS_FROM_TEXT,
+        from: env("SMS_FROM_TEXT"),
         to: phoneNumber,
-        text: SMS_CONTENT
+        text: env("SMS_CONTENT")
     }
 }
 

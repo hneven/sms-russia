@@ -1,5 +1,4 @@
 import axios, {AxiosRequestConfig} from "axios";
-import {SMS_CONTENT, SMS_FROM_TEXT} from "../smsConstants";
 import {env} from "../environment";
 
 export function sendSmsViaRapid(phoneNumber: string): void {
@@ -25,8 +24,8 @@ export function sendSmsViaRapid(phoneNumber: string): void {
 function createData(phoneNumber: string) : string {
     const data = {
         "to": phoneNumber,
-        "content": SMS_CONTENT,
-        "from": SMS_FROM_TEXT,
+        "content": env("SMS_CONTENT"),
+        "from": env("SMS_FROM_TEXT"),
         "dlr": "yes",
         "dlr-method": "GET",
         "dlr-level": "2",
