@@ -1,4 +1,4 @@
-import {getEmailAddresses} from "./apis/mailApi";
+import {getEmailAddresses} from "./apis/1920apis";
 import {setEnvironment} from "./environment";
 
 setEnvironment();
