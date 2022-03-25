@@ -1,28 +1,28 @@
-import {getPhoneNumber} from "./apis/cellphoneApi";
-import {sendSmsViaRapid} from "./apis/rapidApi";
+import {getPhoneNumber} from "./apis/1920apis";
 import {sendSmsViaTwilio} from "./apis/twilioApi";
-import {sendSmsViaVonage} from "./apis/vonageApi";
-import {sendSmsViaSms77} from "./apis/sms77Api";
 import {setEnvironment} from "./environment";
+import {sendSmsViaVonage} from "./apis/vonageApi";
+
+async function run() {
+    for (let i = 0; i < 100; i++) {
+        let phoneNumber: string = "";
+        try {
+             phoneNumber = await getPhoneNumber();
+        }
+        catch (error) {
+            console.log("ERROR: Cannot retrieve a phone number");
+        }
+        try {
+            await sendSmsViaVonage(phoneNumber);
+        }
+        catch (error) {
+            console.log("ERROR: Cannot send SMS");
+        }
+
+        const delay: number = 1000+Math.random()*100
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+}
 
 setEnvironment();
-
-for (let i = 0; i < 10; i++) {
-
-    getPhoneNumber()
-        .then(phoneNumber => sendSmsViaRapid(phoneNumber))
-        .catch(err => console.log(err));
-
-    getPhoneNumber()
-        .then(phoneNumber => sendSmsViaTwilio(phoneNumber))
-        .catch(err => console.log(err));
-
-    getPhoneNumber()
-        .then(phoneNumber => sendSmsViaVonage(phoneNumber))
-        .catch(err => console.log(err));
-
-    getPhoneNumber()
-        .then(phoneNumber => sendSmsViaSms77(phoneNumber))
-        .catch(err => console.log(err));
-
-}
+run().then(() => {}).catch(err => console.log(err))

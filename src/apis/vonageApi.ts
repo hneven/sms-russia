@@ -7,16 +7,22 @@ export function sendSmsViaVonage(phoneNumber: string): void {
         apiKey: env("VONAGE_API_KEY"),
         apiSecret: env("VONAGE_API_SECRET")
     })
-    vonage.message.sendSms(env("SMS_FROM_TEXT"), phoneNumber, env("SMS_CONTENT"), (err, responseData) => {
-        if (err) {
-            console.log(err);
-        } else {
-            if(responseData.messages[0]['status'] === "0") {
-                console.log("Message sent successfully.");
+    vonage.message.sendSms(
+        env("SMS_FROM_TEXT"),
+        phoneNumber, env("SMS_CONTENT"),
+        {
+            type: "unicode"
+        },
+        (err, responseData) => {
+            if (err) {
+                console.log(err);
             } else {
-                console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+                if (responseData.messages[0]['status'] === "0") {
+                    console.log("Message sent successfully.");
+                } else {
+                    console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+                }
             }
-        }
-    })
+        })
 }
 
